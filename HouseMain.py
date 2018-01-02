@@ -22,6 +22,7 @@ def main():
     corr.sort_values(["SalePrice"], ascending=False, inplace=True)
     print(corr.SalePrice)
 
+    #filter out outliers
     train = train.drop(train[(train['GrLivArea'] > 4000) & (train['SalePrice'] < 300000)].index)
 
     #notes on observed correlations:
@@ -69,7 +70,6 @@ def main():
     test['is2010'] = test['YrSold'] == 2010
 
     pred_gbr = (gbr.predict(test))
-
 
     # rmsle_rfr = rmsle(testY.values,pred_rfr)
 
